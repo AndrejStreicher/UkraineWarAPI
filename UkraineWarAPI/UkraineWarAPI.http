@@ -1,0 +1,6 @@
+@UkraineWarAPI_HostAddress = http://localhost:5173
+
+GET {{UkraineWarAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
