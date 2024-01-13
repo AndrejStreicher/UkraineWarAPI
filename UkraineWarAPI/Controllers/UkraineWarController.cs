@@ -10,8 +10,8 @@ namespace UkraineWarAPI.Controllers;
 [AllowAnonymous]
 public class UkraineWarController : ControllerBase
 {
-    private readonly UnderstandingWarScraper _understandingWarScraper = new();
     private readonly ILoggerManager _logger;
+    private readonly UnderstandingWarScraper _understandingWarScraper = new();
 
     public UkraineWarController(ILoggerManager logger)
     {
@@ -23,5 +23,13 @@ public class UkraineWarController : ControllerBase
     {
         _logger.LogInfo("LatestTakeaways endpoint used.");
         return _understandingWarScraper.GetLatestKeyTakeaways();
+    }
+
+    [HttpGet("keytakeaways/{dateTimeString}", Name = "GetKeyTakeawaysByDate")]
+    public UWKeyTakeawaysModel GetTakeawaysByDate(string dateTimeString)
+    {
+        _logger.LogInfo("Key takeaways by date endpoint used.");
+        var dateTime = DateTime.Parse(dateTimeString);
+        return _understandingWarScraper.GetKeyTakeawaysByDate(dateTime);
     }
 }

@@ -10,15 +10,20 @@ public class UnderstandingWarScraper
 
     private HtmlDocument GetLatestWarReport()
     {
+        return GetWarReportByDate(GetLatestReportDate());
+    }
+
+    private HtmlDocument GetWarReportByDate(DateTime dateTime)
+    {
         var web = new HtmlWeb();
-        var htmlDoc = web.Load(_baseLink + GetLatestReportDate());
+        var dateString = dateTime.ToString("MMMM-d-yyyy");
+        var htmlDoc = web.Load(_baseLink + dateString);
         var fieldItems =
             htmlDoc.DocumentNode.SelectNodes(
                 "//div[@class='field-item even' and contains(@property, 'content:encoded')]");
         htmlDoc.LoadHtml(fieldItems[0].InnerHtml);
         return htmlDoc;
     }
-
 
     private bool IsReportAvailable(string link)
     {
@@ -31,15 +36,15 @@ public class UnderstandingWarScraper
         return true;
     }
 
-    private string GetLatestReportDate()
+    private DateTime GetLatestReportDate()
     {
-        string currentDate;
+        DateTime currentDate;
         string linkToLatestReport;
         var i = 1;
         do
         {
-            currentDate = DateTime.Now.AddDays(-i).ToString("MMMM-d-yyyy");
-            linkToLatestReport = _baseLink + currentDate.ToLower();
+            currentDate = DateTime.Now.AddDays(-i);
+            linkToLatestReport = _baseLink + currentDate.ToString("MMMM-d-yyyy").ToLower();
             i++;
         } while (!IsReportAvailable(linkToLatestReport));
 
@@ -61,13 +66,27 @@ public class UnderstandingWarScraper
 
     public UWKeyTakeawaysModel GetLatestKeyTakeaways()
     {
-        var latestReportDate = GetLatestReportDate();
+        var latestReportDate = GetLatestReportDate().ToString("MMMM-d-yyyy");
         var linkToLatestReport = _baseLink + latestReportDate.ToLower();
         return new UWKeyTakeawaysModel
         {
             Date = latestReportDate,
             Link = linkToLatestReport,
             KeyTakeaways = GetKeyTakeawaysList(GetLatestWarReport())
+        };
+    }
+
+    public UWKeyTakeawaysModel GetKeyTakeawaysByDate(DateTime dateTime)
+    {
+        //TODO: Error handling for wrong date
+        var requestedTimeString = dateTime.ToString("MMMM-d-yyyy").ToLower();
+        var linkToRequestedReport = _baseLink + requestedTimeString;
+        if (!IsReportAvailable(linkToRequestedReport)) return null;
+        return new UWKeyTakeawaysModel
+        {
+            Date = requestedTimeString,
+            Link = linkToRequestedReport,
+            KeyTakeaways = GetKeyTakeawaysList(GetWarReportByDate(dateTime))
         };
     }
 }
