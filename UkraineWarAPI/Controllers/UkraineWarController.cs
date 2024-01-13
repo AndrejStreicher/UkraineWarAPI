@@ -1,7 +1,6 @@
 using Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using UkraineWarAPI.Models;
 
 namespace UkraineWarAPI.Controllers;
 
@@ -19,10 +18,11 @@ public class UkraineWarController : ControllerBase
     }
 
     [HttpGet("latesttakeaways", Name = "GetLatestKeyTakeaways")]
-    public UWKeyTakeawaysModel GetLatestKeyTakeaways()
+    public IActionResult GetLatestKeyTakeaways()
     {
         _logger.LogInfo("LatestTakeaways endpoint used.");
-        return _understandingWarScraper.GetLatestKeyTakeaways();
+        var latestTakeaways = _understandingWarScraper.GetLatestKeyTakeaways();
+        return Ok(latestTakeaways);
     }
 
     [HttpGet("keytakeaways/{dateTimeString}", Name = "GetKeyTakeawaysByDate")]
