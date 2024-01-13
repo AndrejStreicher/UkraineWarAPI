@@ -26,10 +26,12 @@ public class UkraineWarController : ControllerBase
     }
 
     [HttpGet("keytakeaways/{dateTimeString}", Name = "GetKeyTakeawaysByDate")]
-    public UWKeyTakeawaysModel GetTakeawaysByDate(string dateTimeString)
+    public IActionResult GetTakeawaysByDate(string dateTimeString)
     {
         _logger.LogInfo("Key takeaways by date endpoint used.");
         var dateTime = DateTime.Parse(dateTimeString);
-        return _understandingWarScraper.GetKeyTakeawaysByDate(dateTime);
+        var keyTakeawaysModel = _understandingWarScraper.GetKeyTakeawaysByDate(dateTime);
+        if (keyTakeawaysModel == null) return NotFound($"No report found for the date: {dateTimeString}");
+        return Ok(keyTakeawaysModel);
     }
 }
