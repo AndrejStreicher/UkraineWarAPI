@@ -78,10 +78,9 @@ public class UnderstandingWarScraper
 
     public UWKeyTakeawaysModel GetKeyTakeawaysByDate(DateTime dateTime)
     {
-        //TODO: Error handling for wrong date
         var requestedTimeString = dateTime.ToString("MMMM-d-yyyy").ToLower();
         var linkToRequestedReport = _baseLink + requestedTimeString;
-        if (!IsReportAvailable(linkToRequestedReport)) return null;
+        if (!IsReportAvailable(linkToRequestedReport)) return null!;
         return new UWKeyTakeawaysModel
         {
             Date = requestedTimeString,
