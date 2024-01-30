@@ -55,7 +55,7 @@ Available endpoints:
   - latesttakeaways: Provides the latest key takeaways of the Russia-Ukraine war.
   - keytakeaways/{dateTimeString}: Provides the key takeaways of the input date.
 ## 💻 Built with
-
+ASP.NET Web API
 ## 🛡️ License
 
 Distributed under the MIT License. See [LICENSE](https://github.com/AndrejStreicher/UkraineWarAPI/blob/main/LICENSE.md) for more information.
