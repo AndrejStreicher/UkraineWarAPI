@@ -38,7 +38,7 @@ xUnit
 
 While this app can be compiled from source, I believe the easiest way to get it up and running is to use a Docker container.
 
-### Installation
+### 🛠️ Installation
 ```
 1. git clone https://github.com/AndrejStreicher/UkraineWarAPI
 2. cd UkraineWarAPI
@@ -54,8 +54,9 @@ api.streicher.tech/ukrainewar/[ENDPOINT]
 Available endpoints:
   - latesttakeaways: Provides the latest key takeaways of the Russia-Ukraine war.
   - keytakeaways/{dateTimeString}: Provides the key takeaways of the input date.
+## 💻 Built with
 
-## License
+## 🛡️ License
 
 Distributed under the MIT License. See [LICENSE](https://github.com/AndrejStreicher/UkraineWarAPI/blob/main/LICENSE.md) for more information.
 
