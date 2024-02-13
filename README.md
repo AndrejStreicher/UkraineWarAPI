@@ -60,7 +60,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/AndrejStreic
 
 ## Authors
 
-* [Andrej Streicher](www.linkedin.com/in/andrej-streicher-35658027b) - *Comp Sci Student* - 
+* [Andrej Streicher](https://www.linkedin.com/in/andrej-streicher-35658027b/) - *Comp Sci Student* - 
 
 ## Acknowledgements
 ### Sources:
