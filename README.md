@@ -6,7 +6,6 @@
     Simple ASP.NET Web API that provides you with the latest verified information from trusted sources.
     <br/>
     <br/>
-    <a href="api.streicher.tech/ukrainewar">View Demo</a>
   </p>
 </p>
 
