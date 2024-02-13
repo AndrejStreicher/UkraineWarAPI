@@ -5,6 +5,7 @@
   <p align="center">
     Simple ASP.NET Web API that provides you with the latest verified information about the Russia-Ukraine war from trusted sources.
     <br/>
+    <a href="http://api.streicher.tech/ukrainewar/" title="UkraineWarApi">View Demo</a>
     <br/>
   </p>
 </p>
