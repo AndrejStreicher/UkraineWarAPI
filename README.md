@@ -3,7 +3,7 @@
   <h3 align="center">UkraineWarAPI</h3>
 
   <p align="center">
-    Simple ASP.NET Web API that provides you with the latest verified information from trusted sources.
+    Simple ASP.NET Web API that provides you with the latest verified information about the Russia-Ukraine war from trusted sources.
     <br/>
     <br/>
   </p>
