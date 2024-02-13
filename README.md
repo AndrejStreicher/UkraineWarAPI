@@ -7,7 +7,6 @@
     <br/>
     <br/>
     <a href="api.streicher.tech/ukrainewar">View Demo</a>
-    .
   </p>
 </p>
 
